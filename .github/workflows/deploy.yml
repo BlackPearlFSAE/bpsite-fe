@@ -1,0 +1,20 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: docker build -t bpsite-fe:latest .
+
+      - name: Restart Frontend Container
+        run: |
+          cd /home/ken/bpsite
+          docker compose up -d --no-deps frontend
