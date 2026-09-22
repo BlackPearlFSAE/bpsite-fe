@@ -25,8 +25,8 @@ export default function NewTeamMember() {
     const fetchData = async () => {
       try {
         const [seasonRes, deptRes] = await Promise.all([
-          fetch('/api/seasons'),
-          fetch('/api/departments')
+          fetch(process.env.NEXT_PUBLIC_API_URL + '/seasons'),
+          fetch(process.env.NEXT_PUBLIC_API_URL + '/departments')
         ]);
         const seasonData = await seasonRes.json();
         const deptData = await deptRes.json();
@@ -66,7 +66,7 @@ export default function NewTeamMember() {
         const formDataImage = new FormData();
         formDataImage.append('image', imageFile);
         
-        const uploadRes = await fetch('/api/upload', {
+        const uploadRes = await fetch(process.env.NEXT_PUBLIC_API_URL + '/upload', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('admin_token')}`
@@ -80,7 +80,7 @@ export default function NewTeamMember() {
       }
 
       // 2. Create team member
-      const res = await fetch('/api/team-members', {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/team-members', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

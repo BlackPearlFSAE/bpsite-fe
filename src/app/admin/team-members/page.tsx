@@ -12,7 +12,7 @@ export default function TeamMembersList() {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const res = await fetch('/api/team-members');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/team-members');
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         setMembers(data);

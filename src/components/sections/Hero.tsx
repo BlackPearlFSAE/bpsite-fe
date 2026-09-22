@@ -16,7 +16,7 @@ export default function Hero() {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const res = await fetch('/api/settings');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/settings');
         const data = await res.json();
         if (data.hero_images) {
           const parsed = JSON.parse(data.hero_images);

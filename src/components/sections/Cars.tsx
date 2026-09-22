@@ -11,7 +11,7 @@ export default function Cars() {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await fetch('/api/cars');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/cars');
         const data = await res.json();
         // Assuming data is an array of cars
         setCars(data);

@@ -11,7 +11,7 @@ export default function Teams() {
   useEffect(() => {
     const fetchLatestSeasonTeam = async () => {
       try {
-        const res = await fetch('/api/seasons');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/seasons');
         const seasons = await res.json();
         if (seasons && seasons.length > 0) {
           setLatestSeason(seasons[0]);

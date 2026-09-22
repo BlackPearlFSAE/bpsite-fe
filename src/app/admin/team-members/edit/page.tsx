@@ -30,8 +30,8 @@ function EditTeamMemberContent() {
     const fetchData = async () => {
       try {
         const [seasonRes, deptRes, memberRes] = await Promise.all([
-          fetch('/api/seasons'),
-          fetch('/api/departments'),
+          fetch(process.env.NEXT_PUBLIC_API_URL + '/seasons'),
+          fetch(process.env.NEXT_PUBLIC_API_URL + '/departments'),
           fetch(`/api/team-members/${id}`)
         ]);
         
@@ -86,7 +86,7 @@ function EditTeamMemberContent() {
         const formDataImage = new FormData();
         formDataImage.append('image', imageFile);
         
-        const uploadRes = await fetch('/api/upload', {
+        const uploadRes = await fetch(process.env.NEXT_PUBLIC_API_URL + '/upload', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('admin_token')}`

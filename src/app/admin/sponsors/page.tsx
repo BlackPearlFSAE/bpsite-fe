@@ -12,7 +12,7 @@ export default function SponsorsList() {
   useEffect(() => {
     const fetchSponsors = async () => {
       try {
-        const res = await fetch('/api/sponsors');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/sponsors');
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         setSponsors(data);

@@ -26,7 +26,7 @@ export default function AddCarPage() {
     // Fetch seasons for dropdown
     const fetchSeasons = async () => {
       try {
-        const res = await fetch('/api/seasons');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/seasons');
         const data = await res.json();
         setSeasons(data);
         if (data.length > 0) setSeasonId(data[0].id.toString());
@@ -72,7 +72,7 @@ export default function AddCarPage() {
         const formData = new FormData();
         formData.append('image', imageFile);
 
-        const uploadRes = await fetch('/api/upload', {
+        const uploadRes = await fetch(process.env.NEXT_PUBLIC_API_URL + '/upload', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -92,7 +92,7 @@ export default function AddCarPage() {
       const specsJson = JSON.stringify(validSpecs);
 
       // 3. Save Car
-      const carRes = await fetch('/api/cars', {
+      const carRes = await fetch(process.env.NEXT_PUBLIC_API_URL + '/cars', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

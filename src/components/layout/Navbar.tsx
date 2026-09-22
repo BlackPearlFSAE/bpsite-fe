@@ -25,8 +25,8 @@ export default function Navbar() {
     const fetchData = async () => {
       try {
         const [carsRes, seasonsRes] = await Promise.all([
-          fetch('/api/cars'),
-          fetch('/api/seasons')
+          fetch(process.env.NEXT_PUBLIC_API_URL + '/cars'),
+          fetch(process.env.NEXT_PUBLIC_API_URL + '/seasons')
         ]);
         const carsData = await carsRes.json();
         const seasonsData = await seasonsRes.json();

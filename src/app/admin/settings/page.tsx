@@ -12,7 +12,7 @@ export default function SiteSettings() {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const res = await fetch('/api/settings');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/settings');
         const data = await res.json();
         
         if (data.hero_images) {
@@ -39,7 +39,7 @@ export default function SiteSettings() {
       const formData = new FormData();
       formData.append('image', files[0]);
       
-      const uploadRes = await fetch('/api/upload', {
+      const uploadRes = await fetch(process.env.NEXT_PUBLIC_API_URL + '/upload', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` },
         body: formData
@@ -69,7 +69,7 @@ export default function SiteSettings() {
     setSaving(true);
     try {
       // Save Hero Images
-      await fetch('/api/settings', {
+      await fetch(process.env.NEXT_PUBLIC_API_URL + '/settings', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ export default function SiteSettings() {
       });
 
       // Save About Image
-      await fetch('/api/settings', {
+      await fetch(process.env.NEXT_PUBLIC_API_URL + '/settings', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ export default function NewSponsor() {
   useEffect(() => {
     const fetchSeasons = async () => {
       try {
-        const res = await fetch('/api/seasons');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/seasons');
         const data = await res.json();
         setSeasons(data);
       } catch (err) {
@@ -55,7 +55,7 @@ export default function NewSponsor() {
         const formDataImage = new FormData();
         formDataImage.append('image', imageFile);
         
-        const uploadRes = await fetch('/api/upload', {
+        const uploadRes = await fetch(process.env.NEXT_PUBLIC_API_URL + '/upload', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('admin_token')}`
@@ -68,7 +68,7 @@ export default function NewSponsor() {
         uploadedImagePath = uploadData.url;
       }
 
-      const res = await fetch('/api/sponsors', {
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/sponsors', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

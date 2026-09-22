@@ -8,7 +8,7 @@ export default function About() {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const res = await fetch('/api/settings');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/settings');
         const data = await res.json();
         if (data.about_image) {
           setAboutImage(data.about_image);

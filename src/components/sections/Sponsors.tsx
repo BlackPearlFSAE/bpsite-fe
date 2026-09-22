@@ -23,7 +23,7 @@ function SponsorsContent() {
   useEffect(() => {
     const fetchSeasons = async () => {
       try {
-        const res = await fetch('/api/seasons');
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + '/seasons');
         const data = await res.json();
         setSeasons(data.sort((a: any, b: any) => b.year - a.year)); // Newest first
         if (sponsorSeasonIdParam) {

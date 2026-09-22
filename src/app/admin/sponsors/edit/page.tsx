@@ -32,7 +32,7 @@ function EditSponsorContent() {
     const fetchData = async () => {
       try {
         const [seasonRes, sponsorRes] = await Promise.all([
-          fetch('/api/seasons'),
+          fetch(process.env.NEXT_PUBLIC_API_URL + '/seasons'),
           fetch(`/api/sponsors/${id}`)
         ]);
         
@@ -80,7 +80,7 @@ function EditSponsorContent() {
         const formDataImage = new FormData();
         formDataImage.append('image', imageFile);
         
-        const uploadRes = await fetch('/api/upload', {
+        const uploadRes = await fetch(process.env.NEXT_PUBLIC_API_URL + '/upload', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('admin_token')}`

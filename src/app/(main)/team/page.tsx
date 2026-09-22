@@ -16,7 +16,7 @@ function TeamDetailsContent() {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        let url = '/api/seasons';
+        let url = process.env.NEXT_PUBLIC_API_URL + '/seasons';
         const res = await fetch(url);
         if (!res.ok) throw new Error('Failed to fetch seasons');
         const seasons = await res.json();
