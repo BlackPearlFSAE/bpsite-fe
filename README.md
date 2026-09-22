@@ -1,3 +1,14 @@
+แมนนวล สำหรับการเปลี่ยนแปลงเมื่อได้ dns
+เรโปนี้เป็นหน้าเว็บของ bpsite 
+ตอนนี้ฝากไว้ที่ mrctl 
+หากได้ dns แล้วก็ให้เปลี่ยน [config](bpsite/next.config.js) `bpsite/next.config.js` โดยการลบ `basePath: "/bp",`
+แก้ [workflow](.github/workflows/deploy.yml) โดยการเปลี่ยน `run: docker build --build-arg NEXT_PUBLIC_API_URL=/api -t bpsite-fe:latest .`
+`/bp/api` กลับไปเป็น `/api`
+จากนั้นไปแก้ backend ด้วย แล้วก็เปลี่ยน config บน vm 
+
+สำหรับเว็บนี้จะมี runner ของ organize คอย deploy ให้
+การดีพลอยก็จะใช้ docker ระบุไว้ว่าจะติดตั้ง node nginx จากนั้นติดตั้งแพกเกจ และตั้งค่า nginx
+คร่าวๆประมาณนี้
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
