@@ -60,7 +60,7 @@ function SponsorsContent() {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 border-b border-gray-800 pb-8">
           <div className="section-header text-left mb-0">
-            <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-wider mb-2">Our <span className="text-red-600">Sponsors</span></h2>
+            <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-wider mb-2">Our <span className="text-[#FF6B00]">Sponsors</span></h2>
             <p className="text-gray-400 text-lg">Season {selectedSeason?.year || ''}</p>
           </div>
         </div>
